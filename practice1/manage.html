@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理平台</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .table1 a:link {
+        color: #000000;
+        text-decoration: none;
+    }
+    .table1 a:visited {
+        color: #000000;
+        text-decoration: none;
+    }
+    .table1 a:hover {
+        color: #000000;
+        text-decoration: underline;
+    }
+    .header{
+        height: 25px;
+        width: 100%;
+        background: lightgray;
+        position: relative;
+        overflow: hidden;
+    }
+    .rightText{
+        margin-left: 10px;
+        margin-right: 10px;
+        position: relative;
+        float: right;
+    }
+    .nav{
+        position: relative;
+        height: 100px;
+        width: 100%;
+        background: steelblue;
+        overflow: hidden;
+    }
+    .titleLogo{
+        height: 100px;
+        width:300px;
+        position: relative;
+        float: left;
+    }
+    .navLogo img{
+        height: 40px;
+        width: 40px;
+        margin-left: 20px;
+        margin-top: 13px;
+    }
+    .navLogo li{
+        height: 100px;
+        width: 80px;
+        position: relative;
+        float: left;
+        /*border: 1px solid deepskyblue;*/
+    }
+    .navLogo li p {
+        text-align: center;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .main{
+        bottom: 40px;
+        top: 125px;
+        width: 100%;
+        position: absolute;
+    }
+    .content{
+        height: 48%;
+        width: 32.9%;
+        margin-top: 5px;
+        margin-left: 3px;
+        float: left;
+        border: 1px solid lightgray;
+        border-radius: 1px;
+    }
+    .content .tap{
+        right: 0;
+        height: 30px;
+        width: calc(100% - 5px);
+        padding-left: 5px;
+        border-bottom: 1px solid lightgray;
+        overflow: auto;
+    }
+    .content .tap li{
+        width: auto;
+        padding-right: 15px;
+        padding-left: 15px;
+        height: 26px;
+        margin:3px 0px -1px -1px;
+        position: relative;
+        float: left;
+        font-size: small;
+        text-align: center;
+        line-height: 30px;
+        overflow: hidden;
+        color:steelblue;
+    }
+    .content .tap .show{
+        border: 1px solid lightgray;
+        border-collapse: collapse;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        color:gray;
+    }
+    .tap-content{
+        bottom: 0;
+        width: 100%;
+        height: calc(100% - 30px);
+        position: relative;
+        float: none;
+        display: none;
+        overflow: auto;
+    }
+    .show{
+        display: block;
+    }
+    .footer{
+        height: 40px;
+        width: 100%;
+        bottom: 0;
+        background: skyblue;
+        position: absolute;
+    }
+    .footerText{
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        line-height: 40px;
+    }
+    .table1{
+        padding-left: 8px;
+        padding-top: 5px;
+        width: 100%;
+        table-layout: fixed;
+    }
+    .table1 td{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 30px;
+    }
+    .td1{
+        width: 75%;
+    }
+    .td2{
+        width: 25%;
+    }
+    .turn{
+        height: 55px;
+        padding: 7px 0px 1px 7px;
+        border-bottom: 1px solid lightgray;
+    }
+    .turn1{
+        height: 55px;
+        border: 1px solid lightgray;
+        overflow: hidden;
+    }
+    .turn1 img{
+        padding-left: 5px;
+        padding-top: 10px;
+        height: 20px;
+        width: 20px;
+    }
+    .turn1 .select1{
+        border: 0px;
+    }
+    .turn1 button{
+        padding: 1px 15px;
+    }
+    .room{
+        height: 35px;
+        width: 100%;
+    }
+    .room table{
+        padding-top: 5px;
+    }
+    .room table tbody tr th{
+        width: 100px;
+        text-align: left;
+    }
+    .room-content{
+        width: 100%;
+        height: calc(100% - 100px);
+        overflow: auto;
+    }
+    .room-content table{
+        width: calc(100% - 1px);
+        table-layout:fixed;
+        word-wrap:break-word;
+        word-break:break-all;
+        text-align: center;
+        border-collapse:collapse
+    }
+    .room-content table tbody tr td{
+        width: 100px;
+        padding: 3px 3px;
+        border: 1px lightgray solid;
+    }
+    .content3-top{
+        height: 40px;
+        width: calc(100% - 7px);
+        padding: 5px 1px 10px 5px;
+        border: 1px solid lightgray;
+        border-radius: 1px;
+
+    }
+    .application{
+        height: 40px;
+        width: 100%;
+        border: 1px solid lightgray;
+        border-radius: 1px;
+        overflow: hidden;
+    }
+    .content3-bottom{
+        margin-top: 5px;
+        height: calc(100% - 63px);
+        width: calc(100% - 1px);
+        border: 1px solid lightgray;
+        border-radius: 1px;
+    }
+    .content3 {
+        border:none;
+        height: calc(48% + 2px);
+    }
+    .application img{
+        padding-left: 5px;
+        padding-top: 5px;
+        height: 20px;
+        width: 20px;
+    }
+    .application select{
+        border: 0px;
+    }
+    .application button{
+        padding: 1px 15px;
+    }
+    /*.table1 tr:nth-child(1),.table1 tr:nth-child(1) a,.table1 tr:nth-child(2),.table1 tr:nth-child(2) a,.table1 tr:nth-child(3),.table1 tr:nth-child(3) a{*/
+        /*color:red;*/
+    /*}*/
+    .pre1{
+        font-family: 宋体;
+        font-size: 17px;
+        white-space: pre-line;
+        word-wrap: break-word;
+        line-height: 25px;
+    }
+    .content5-bottom{
+        margin-top: 10px;
+        margin-left: 10px;
+        height: 60px;
+        width: 30%;
+        float: left;
+        text-align: center;
+        padding:5px 5px 5px 5px;
+        color:#fff;
+    }
+    .manage-tools{
+        margin-top: 10px;
+        margin-left: 5px;
+        height: 140px;
+        width: 120px;
+        float: left;
+    }
+    .manage-tools img{
+        height: 100px;
+        width: 120px;
+    }
+    .manage-tools-text{
+        padding-top: 20px;
+        height: 20px;
+        width: 100%;
+        font-size: 13px;
+        text-align: center;
+    }
+    .full{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+</style>
+<script src="jquery.min.js"></script>
+<body>
+    <!-- 头部 -->
+    <div class="header">
+        <a class="rightText" href="#">帮助</a>
+        <p class="rightText">您可以<a href="#">修改密码</a>或<a href="#">退出</a></p>
+        <p class="rightText">尊敬的用户：胡工</p>
+    </div>
+
+    <!-- 菜单栏 -->
+    <div class="nav">
+        <img class="titleLogo" src=""/>
+        <ul class="navLogo">
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>什么什么系统</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>首页</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>决策支持系统</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>首页</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>文件管理</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>医疗技术</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>指标管理</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>手术管理</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>不良事件</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>能力评估</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>考核管理</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>外来质控</p>
+            </li>
+            <li onclick="javascript:window.location.href='#'">
+                <img src=""/>
+                <p>质量什么会</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 内容 -->
+    <div class="main">
+
+        <!-- 1 -->
+        <div class="content">
+            <div class="tap">
+                <ul>
+                    <li class="show" onclick="change(this)">大事件</li>
+                    <li onclick="change(this)">通知公告</li>
+                    <li onclick="change(this)">信息更新公告</li>
+                </ul>
+            </div>
+            <div class="tap-content show" id="tap-content1">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content" id="tap-content2">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2015-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content" id="tap-content3">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2016-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="content">
+            <div class="tap">
+                <ul>
+                    <li onclick="change(this)">住院病人统计</li>
+                    <li onclick="change(this)">门急诊统计</li>
+                    <li onclick="change(this)">挂号统计</li>
+                    <li onclick="change(this)">年度指标</li>
+                    <li onclick="change(this)" class="show" >科室排班</li>
+                </ul>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2015-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2016-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+
+            </div>
+            <div class="tap-content show">
+                <div class="turn">
+                    <div class="turn1">
+                        <img src="">
+                        <select class="select1">
+                            <option value ="科室排班">科室排班</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <select>
+                            <option value ="今日值班(本院)">今日值班(本院)</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <button type="button">全屏</button>
+                    </div>
+                </div>
+                <div class="room">
+                    <table>
+                        <tr>
+                            <th> 科室 </th>
+                            <th> 一线班</th>
+                            <th> 二线班</th>
+                            <th> 三线班</th>
+                            <th> 会诊班</th>
+                        </tr>
+                    </table>
+                </div>
+                <div class="room-content">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td> TEL:肿瘤血液科 17216,乳腺肿瘤内 17220 值班电话 18916</td>
+                            <td> 贾新颜</td>
+                            <td> 贾新颜</td>
+                            <td> 高勇</td>
+                            <td> 杨文忠[大]</td>
+                        </tr>
+                        <tr>
+                            <td> TEL:肿瘤血液科 17216,乳腺肿瘤内 17220 值班电话 18916</td>
+                            <td> 贾新颜</td>
+                            <td> 贾新颜</td>
+                            <td> 高勇</td>
+                            <td> 杨文忠[大]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="content content3" >
+            <div class="content3-top">
+                <div class="application">
+                    <img src="">
+                    <select class="select1">
+                        <option value ="科室排班">资质项目申请入口</option>
+                        <option value ="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <button type="button">通知联络</button>
+                </div>
+            </div>
+            <div class="content3-bottom">
+                <div class="tap">
+                    <ul>
+                        <li class="show" onclick="change(this)">中国医院协会患者安全目标(2017版)</li>
+                        <li onclick="change(this)">文件管理</li>
+                    </ul>
+                </div>
+                <div class="tap-content show">
+                    <div class = "content1">
+                        <pre class="pre1">
+                            目标一正确识别患者身份
+                            （一）严格执行查对制度，确保对正确的患者实施正确的操作和治疗。患者由至少两种标识认定，如姓名、病案号、出生日期等，但不包括患者的床号或房间号。不得采用条码扫描等信息识别技术作为唯一识别方法。
+                            （二）在输血时采用双人核对来识别患者的身份。
+                            （三）对手术、传染病、药物过敏、精神病人、意识障碍、语言障碍等特殊患者应有身份识别标识（如腕带、床头卡、指纹等）。
+
+                            目标二强化手术安全核查
+                            （一）择期手术须在完成各项术前检查与评估工作后，方可下达手术医嘱。
+                            （二）由实施手术的医生标记手术部位，标记时应该在患者清醒和知晓的情况下进行。规范手术部位识别制度与工作流程。
+                            （三）建立手术安全核查及手术风险评估的制度和流程，切实落实世界卫生组织手术安全核对表，并提供必需的保障与有效的监管措施。
+                            （四）围手术期预防性抗菌药物选择与使用符合规范。
+
+                            目标三确保用药安全
+                            （一）规范药品管理程序，对高浓度电解质、易混淆（听似、看似）药品有严格的贮存、识别与使用的要求。
+                            （二）严格执行麻醉药品、精神药品、放射性药品、肿瘤化疗药品、医疗用毒性药品及药品类易制毒化学品等特殊药品的使用与管理规范。
+                            （三）规范临床用药医嘱的开具、审核、查对、执行制度及流程。
+                            （四）制定并执行药物重整制度及流程。
+
+                            目标四减少医院相关性感染
+                            （一）落实手卫生规范，为执行手卫生提供必需的保障和有效的监管措施。
+                            （二）医护人员在无菌临床操作过程中应严格遵循无菌操作规范，确保临床操作的安全性。
+                            （三）有预防多重耐药菌感染的措施和抗菌药物合理应用规范，尽可能降低医院相关感染的风险。
+                            （四））使用合格的无菌医疗器械。有创操作的环境消毒应遵循医院感染控制的基本要求。
+                            （五）落实医院感染监测指标体系并持续改进。
+                            （六）严格执行各种废弃物的处理流程。
+                        </pre>
+                    </div>
+                </div>
+                <div class="tap-content">
+                    <div class = "content1">
+                        <table class="table1">
+                            <tr>
+                                <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                                <td class="td2">2015-07-11</td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                                <td class="td2">2017-07-11</td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                                <td class="td2">2017-07-11</td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                                <td class="td2">2017-07-11</td>
+                            </tr>
+                            <tr>
+                                <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                                <td class="td2">2017-07-11</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="content">
+            <div class="tap">
+                <ul>
+                    <li class="show" onclick="change(this)">外来质控目录</li>
+                    <li onclick="change(this)">外来质控反馈</li>
+                    <li onclick="change(this)">信息更新公告</li>
+                    <li onclick="change(this)">外来质控管理流程和标准</li>
+                </ul>
+            </div>
+            <div class="tap-content show">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 肿瘤化疗质控中心</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 上海市病历质控中心</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 妇科质控中心</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 妇保所</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 浦东新区中医质控中心</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 上海市中医质控中心</a></td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2015-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2016-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="content">
+            <div class="tap">
+                <ul>
+                    <li class="show" onclick="change(this)">考核与反馈</li>
+                    <li onclick="change(this)">月质量简报</li>
+                    <li onclick="change(this)">协调会议记录及签到</li>
+                    <li onclick="change(this)">季度医疗质量讲评</li>
+                    <li onclick="change(this)">月检查结果啥啥</li>
+                </ul>
+            </div>
+            <div class="tap-content show">
+                <div class = "content1">
+                    <button class="content5-bottom" style="background-color:steelblue;">内部考核与反馈总表</button>
+                    <button class="content5-bottom" style="background-color:darkolivegreen;">医疗质量指标考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:darkslategrey;">病历质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:mediumseagreen;">临床路径与医疗信息考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:grey;">手术管理质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:cornflowerblue;">会诊管理与反馈</button>
+                    <button class="content5-bottom" style="background-color:darkcyan;">门诊质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:saddlebrown;">医技质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:lightcoral;">感染控制质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:steelblue;">内部考核与反馈总表</button>
+                    <button class="content5-bottom" style="background-color:darkolivegreen;">医疗质量指标考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:darkslategrey;">病历质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:mediumseagreen;">临床路径与医疗信息考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:grey;">手术管理质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:cornflowerblue;">会诊管理与反馈</button>
+                    <button class="content5-bottom" style="background-color:darkcyan;">门诊质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:saddlebrown;">医技质量考核与反馈</button>
+                    <button class="content5-bottom" style="background-color:lightcoral;">感染控制质量考核与反馈</button>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2015-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2016-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+
+            </div>
+            <div class="tap-content">
+
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="content">
+            <div class="tap">
+                <ul>
+                    <li class="show" onclick="change(this)">管理工具</li>
+                    <li onclick="change(this)">应用实例</li>
+                    <li onclick="change(this)">培训交流</li>
+                </ul>
+            </div>
+            <div class="tap-content show">
+                <div class = "content1">
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">从经验管理到走向</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">PDCA循环</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">鱼骨头分析法</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">FMEA失效模式</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">CMAD原则</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">FMEA失效模式</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">CMAD原则</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">FMEA失效模式</a>
+                        </div>
+                    </div>
+                    <div class="manage-tools">
+                        <img src=""/>
+                        <div class="manage-tools-text">
+                            <a href="#">CMAD原则</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2015-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="tap-content">
+                <div class = "content1">
+                    <table class="table1">
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2016-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                        <tr>
+                            <td class="td1"><a href="">》 2017上半年医疗质量信息平台医疗质量信息平台医疗质量信息平台医疗质量信息平台</a>.........................................</td>
+                            <td class="td2">2017-07-11</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        <p class="footerText">技术支持：上海延华智能（科技）有限公司</p>
+    </div>
+</body>
+<script src="manage.js"></script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>magnifier</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+
+        html{
+            height:100%;
+        }
+        body{
+            height:100%;
+        }
+
+        .index{
+            height:100%;
+        }
+
+        .source{
+            height: 300px;
+            width: 300px;
+            margin-left: 50px;
+            margin-top: 50px;
+            border:1px solid #000;
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .source img{
+            height: 300px;
+            width: 300px;
+            position: absolute;
+        }
+
+        .enlarge{
+            height: 300px;
+            width: 300px;
+            margin-left: 450px;
+            margin-top: 50px;
+            position: absolute;
+            border: 1px solid #000;
+            overflow: hidden;
+            display: none;;
+        }
+
+        .enlarge img{
+            top: 0px;
+            left: 0px;
+            height: 1200px;
+            width: 1200px;
+            position: absolute;
+        }
+
+        .show{
+            height: 75px;
+            width: 75px;
+            background: rgba(0, 152, 255, 0.7);
+            border: 1px solid deepskyblue;
+            position: absolute;
+            cursor: move;
+            display: none;
+        }
+
+        .cover{
+            height: 300px;
+            width: 300px;
+            position: absolute;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+<div class="index">
+    <div class="source" onmouseover="over()" onmouseout="out()">
+        <img src="food.jpg"/>
+        <div class="show" id="show"></div>
+        <div class="cover" onmousemove="moveShow(event)" ></div>
+    </div>
+
+    <div class="enlarge" id="enlarge">
+        <img id="pic" src="food.jpg"/>
+    </div>
+</div>
+<script src="magnifier.js"></script>
+</body>
+</html>
